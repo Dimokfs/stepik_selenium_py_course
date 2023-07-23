@@ -3,15 +3,31 @@ from selenium.webdriver.common.by import By
 import time
 
 try:
-    link = "http://suninjuly.github.io/registration1.html"
+    #link = "http://suninjuly.github.io/registration1.html"
+    link = "http://suninjuly.github.io/registration2.html"
     browser = webdriver.Chrome()
     browser.get(link)
 
     # Ваш код, который заполняет обязательные поля
+    input1 = browser.find_element(By.CSS_SELECTOR,"[placeholder = \"Input your first name\"]")
+    input1.send_keys("Dima")
 
+    input2 = browser.find_element(By.CSS_SELECTOR, "[placeholder = \"Input your last name\"]")
+    input2.send_keys("Frolov")
+
+    input3 = browser.find_element(By.CSS_SELECTOR, "[placeholder = \"Input your email\"]")
+    input3.send_keys("Frolov@mail.ru")
+
+    browser.execute_script("window.scrollBy(0, 100);")
+
+    input4 = browser.find_element(By.CSS_SELECTOR, "[placeholder = \"Input your phone:\"]")
+    input4.send_keys("12345678")
+
+    input5 = browser.find_element(By.CSS_SELECTOR, "[placeholder = \"Input your address:\"]")
+    input5.send_keys("Russia")
 
     # Отправляем заполненную форму
-    button = browser.find_element(By.CSS_SELECTOR, "button.btn")
+    button = browser.find_element(By.TAG_NAME, "button")
     button.click()
 
     # Проверяем, что смогли зарегистрироваться
